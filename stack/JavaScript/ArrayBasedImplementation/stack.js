@@ -30,18 +30,7 @@ class ArrayStack {
     return this._data.length
   }
 }
-//test
-const stack = new ArrayStack()
-stack.push("aaa")
-stack.push("bbb")
-stack.push("ccc")
 
-console.log(stack.pop())
-console.log(stack.peek())
-
-console.log(stack.pop())
-console.log(stack.pop())
-
-console.log(stack.isEmpty())
-
-console.log(stack.size())
+module.exports = {
+  ArrayStack
+}

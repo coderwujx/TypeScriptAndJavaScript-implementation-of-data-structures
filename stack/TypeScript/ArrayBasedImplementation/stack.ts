@@ -31,21 +31,4 @@ class ArrayStack<T = any> implements IStack<T> {
   }
 }
 
-//test
-const stack = new ArrayStack<string>()
-stack.push("aaa")
-stack.push("bbb")
-stack.push("ccc")
-
-console.log(stack.pop())
-console.log(stack.peek())
-
-console.log(stack.pop())
-console.log(stack.pop())
-
-console.log(stack.isEmpty())
-
-console.log(stack.size())
-
-
-export {}
+export default ArrayStack
