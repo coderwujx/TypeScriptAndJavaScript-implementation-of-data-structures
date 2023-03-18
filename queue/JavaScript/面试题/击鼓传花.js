@@ -1,4 +1,4 @@
-const {ArrayQueue} = require("../ArrayBase/queue")
+const { ArrayQueue } = require("../ArrayBase/queue")
 
 function hotPotato(names, num) {
   //创建队列保存数据
