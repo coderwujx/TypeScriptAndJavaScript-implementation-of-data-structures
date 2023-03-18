@@ -1,4 +1,4 @@
-import ArrayStack from "./ArrayBasedImplementation/stack"
+import ArrayStack from "./ArrayBase/stack"
 //ArrayStack test
 const stack = new ArrayStack<string>()
 stack.push("aaa")

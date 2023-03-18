@@ -5,7 +5,7 @@
   3.右括号都有一个对应的相同类型的左括号
 */
 
-const { ArrayStack } = require("../ArrayBasedImplementation/stack")
+const { ArrayStack } = require("../ArrayBase/stack")
 function isValid(string) {
   //创建一个栈结构
   const stack = new ArrayStack()

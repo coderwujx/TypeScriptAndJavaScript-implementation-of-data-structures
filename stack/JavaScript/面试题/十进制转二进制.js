@@ -1,4 +1,4 @@
-const { ArrayStack } = require("../ArrayBasedImplementation/stack")
+const { ArrayStack } = require("../ArrayBase/stack")
 function decimalToBinary(decimal) {
   //创建一个stack存放数据
   const stack = new ArrayStack()

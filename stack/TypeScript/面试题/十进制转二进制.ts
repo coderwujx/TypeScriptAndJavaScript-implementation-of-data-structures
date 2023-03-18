@@ -1,4 +1,4 @@
-import ArrayStack from "../ArrayBasedImplementation/stack"
+import ArrayStack from "../ArrayBase/stack"
 
 function decimalToBinary(decimal: number): string {
   //创建一个stack存放数据

@@ -4,7 +4,7 @@
   2.左括号必须以正确的顺序闭合
   3.右括号都有一个对应的相同类型的左括号
 */
-import ArrayStark from "../ArrayBasedImplementation/stack"
+import ArrayStark from "../ArrayBase/stack"
 function isValid(s: string): boolean {
   //创建一个栈结构
   const stack = new ArrayStark<string>()
