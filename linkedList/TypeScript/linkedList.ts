@@ -1,5 +1,5 @@
 //创建Node节点
-class LinkedNode<T> {
+export class LinkedNode<T> {
   value: T
   next: LinkedNode<T> | null = null
   constructor(value: T) {
@@ -8,7 +8,7 @@ class LinkedNode<T> {
 }
 
 //创建linkedList
-class LinkedList<T> {
+export class LinkedList<T> {
   private head: LinkedNode<T> | null = null
   private size: number = 0
 
