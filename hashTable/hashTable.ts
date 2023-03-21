@@ -28,13 +28,42 @@ class HashTable<T = any> {
   }
 
   /**
+   * 传入一个数字判断是否为质数
+   * @author coderwujx
+   * @param num 传入一个数字
+   * @returns 是否为质数
+   */
+  isPrime(num: number): boolean {
+    const sqrt = Math.sqrt(num)
+    for (let i = 2; i < sqrt; i++) {
+      if (num % i === 0) {
+        return false
+      }
+    }
+    return true
+  }
+  /**
+   * 传入一个数字返回下一个质数
+   * @param num 传入一个数字
+   * @returns 返回下一个质数
+   */
+  private getNextPrime(num: number): number {
+    let newPrime = num
+    //判断传入的方法是否是一个质数
+    while (this.isPrime(newPrime)) {
+      newPrime++
+    }
+    return newPrime
+  }
+
+  /**
    * 扩容或者缩减函数
    * @author coderwujx
    * @param newLength 扩容的长度
    */
   private reSize(newLength: number) {
     //赋值新的长度
-    this.length = newLength
+    this.length = this.getNextPrime(newLength)
 
     //获取原来的所有的数据，并且放进新的数据
     //数据初始化
