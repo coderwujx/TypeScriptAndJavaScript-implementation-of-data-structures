@@ -28,6 +28,33 @@ class HashTable<T = any> {
   }
 
   /**
+   * 扩容或者缩减函数
+   * @author coderwujx
+   * @param newLength 扩容的长度
+   */
+  private reSize(newLength: number) {
+    //赋值新的长度
+    this.length = newLength
+
+    //获取原来的所有的数据，并且放进新的数据
+    //数据初始化
+    const oldStorage = this.storage
+    this.storage = []
+    this.count = 0
+    //对数据进行和遍历
+    oldStorage.forEach(buckwt => {
+      //桶里面没有数据
+      if (!buckwt) return
+
+      //桶里有数据
+      for (let i = 0; i < buckwt.length; i++) {
+        const tuple = buckwt[i]
+        this.put(tuple[0], tuple[1])
+      }
+    })
+  }
+
+  /**
    * 插入或者修改
    * @author coderwujx
    * @param key 需要插入的键
@@ -60,6 +87,13 @@ class HashTable<T = any> {
     //如果没有进行代码覆盖，则在当前位置进行添加
     if (!isUpdate) {
       buckwt.push([key, value])
+      this.count++
+
+      //如果发现loadFactor超过0.75将自动扩容
+      const loadFactor = this.count / this.length
+      if (loadFactor > 0.75) {
+        this.reSize(this.length * 2)
+      }
     }
   }
   /**
@@ -109,6 +143,11 @@ class HashTable<T = any> {
         //剪切掉值
         buckwt.splice(i, 1)
         this.count--
+
+        //当loadFactor低于0.25时进行缩容
+        if (this.count / this.length < 0.25 && this.length > 7) {
+          this.reSize(Math.floor(this.length / 2))
+        }
         return tuple[1]
       }
     }
