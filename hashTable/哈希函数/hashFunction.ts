@@ -19,3 +19,5 @@ function hashFunc(key: string, max: number): number {
   
   return index
 }
+
+export default hashFunc
