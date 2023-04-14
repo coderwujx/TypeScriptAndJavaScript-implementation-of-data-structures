@@ -94,6 +94,9 @@ export class LinkedList<T> {
       this.head = current?.next ?? null
     } else {
       const previous = this.getNode(position - 1)
+      //需要给current重新赋值
+      current = previous!.next
+
       //找到需要的节点
       previous!.next = current?.next?.next ?? null
     }
