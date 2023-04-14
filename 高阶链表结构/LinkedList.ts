@@ -58,7 +58,16 @@ export class LinkedList<T> {
     let current = this.head
     while (current) {
       values.push(current.value)
-      current = current.next
+      if (this.isTail(current)) {
+        current = null
+      } else {
+        current = current.next
+      }
+    }
+
+    //判断是否为循环链表
+    if (this.head && this.tail?.next === this.head) {
+      values.push(this.head.value)
     }
     console.log(values.join("-> "))
   }
