@@ -30,6 +30,11 @@ export class LinkedList<T> {
     return current
   }
 
+  //判断是否为最后一个节点
+  private isTail(node: LinkedNode<T>): boolean {
+    return node === this.tail
+  }
+
   //追加节点
   append(value: T): void {
     //根据value创建节点
