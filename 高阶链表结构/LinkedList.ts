@@ -21,7 +21,7 @@ export class LinkedList<T> {
 
   //封装私有方法
   //根据position，获取节点
-  private getNode(position: number): LinkedNode<T> | null {
+  protected getNode(position: number): LinkedNode<T> | null {
     let index = 0
     let current = this.head
     while (index++ < position && current) {
