@@ -74,7 +74,33 @@ class DoublyLinkedList<T> extends LinkedList<T> {
       current.prev = newNode
       this.size++
     }
-
     return true
+  }
+
+  //根据索引删除节点
+  removeAt(position: number): T | null {
+    if (position < 0 || position >= this.length) return null
+
+    let current = this.head
+    if (position === 0) {
+      if (this.length === 1) {
+        this.head = null
+        this.tail = null
+      } else {
+        this.head = this.head!.next
+        this.head!.prev = null
+      }
+    } else if (position === this.length - 1) {
+      current = this.tail
+      this.tail = this.tail!.prev
+      this.tail!.next = null
+    } else {
+      current = this.getNode(position) as DoublyLinkedNode<T>
+      current.next!.prev = current.prev
+      current.prev!.next = current.next
+    }
+
+    this.size--
+    return current?.value ?? null
   }
 }
