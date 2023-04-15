@@ -35,9 +35,45 @@ class Heap<T> {
     }
   }
 
-  //从堆中删除最大/最小元素
+  //提取元素
   extract(): T | undefined {
-    return undefined
+    //判断元素个数是否为0或1
+    if (this.length === 0) return undefined
+    if (this.length === 1) {
+      this.length--
+      return this.data.pop()!
+    }
+
+    //提取并且放回最大值
+    const topValue = this.data[0]
+    this.data[0] = this.data.pop()!
+    this.length--
+
+    //维护最大堆特性，进行下滤操作
+    let index = 0
+    while (2 * index + 1 <= this.length -1) {
+      //找到左右子节点
+      let leftChildIndex = 2 * index + 1
+      let rightChildIndex = leftChildIndex + 1
+      //找到左右子节点较大的值
+      let largerIndex = leftChildIndex
+      if (
+        rightChildIndex < this.length &&
+        this.data[rightChildIndex] > this.data[leftChildIndex]
+      ) {
+        largerIndex = rightChildIndex
+      }
+
+      //较大的值的index位置进行比较
+      if (this.data[index] >= this.data[largerIndex]) {
+        break
+      }
+      //交换位置
+      this.swap(index, largerIndex)
+      index = largerIndex
+    }
+
+    return topValue
   }
 
   //返回堆中的最大/最小元素
