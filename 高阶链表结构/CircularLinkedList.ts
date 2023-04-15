@@ -12,7 +12,15 @@ class CircularLinkedList<T> extends LinkedList<T> {
     if (isSuccess && (position === this.length - 1 || position === 0)) {
       this.tail!.next = this.head
     }
-
     return isSuccess
+  }
+
+  //删除节点
+  removeAt(position: number): T | null {
+    const value = super.removeAt(position)
+    if (value && this.tail && position === this.length) {
+      this.tail.next = this.head
+    }
+    return value
   }
 }
