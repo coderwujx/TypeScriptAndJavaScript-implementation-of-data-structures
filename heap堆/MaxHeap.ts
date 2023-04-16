@@ -1,4 +1,4 @@
-//堆结构
+//堆结构:最大堆
 class Heap<T> {
   //保存数据
   private data: T[] = []
