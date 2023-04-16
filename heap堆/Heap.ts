@@ -5,6 +5,10 @@ class Heap<T> {
   //堆的大小
   private length: number = 0
 
+  constructor(arr: T[] = []) {
+    this.buildHeap(arr)
+  }
+
   //私有工具方法
   private swap(i: number, j: number) {
     const temp = this.data[i]
@@ -50,8 +54,13 @@ class Heap<T> {
     this.length--
 
     //维护最大堆特性，进行下滤操作
-    let index = 0
-    while (2 * index + 1 <= this.length -1) {
+    this.heapify_down(0)
+    return topValue
+  }
+
+  private heapify_down(number: number) {
+    let index = number
+    while (2 * index + 1 <= this.length - 1) {
       //找到左右子节点
       let leftChildIndex = 2 * index + 1
       let rightChildIndex = leftChildIndex + 1
@@ -72,8 +81,6 @@ class Heap<T> {
       this.swap(index, largerIndex)
       index = largerIndex
     }
-
-    return topValue
   }
 
   //返回堆中的最大/最小元素
@@ -92,7 +99,17 @@ class Heap<T> {
   }
 
   //通过一个列表来构造堆
-  buildHeap(arr: T[]) {}
+  buildHeap(arr: T[]) {
+    //先使用array的值
+    this.data = arr
+    this.length = arr.length
+
+    //从第一个非叶子节点，开始进行下滤操作
+    const start = Math.floor((this.length - 1) / 2)
+    for (let i = start; i >= 0; i++) {
+      this.heapify_down(i)
+    }
+  }
 }
 
 export {}
