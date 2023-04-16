@@ -2,7 +2,7 @@
  * 最大堆
  * @author coderwujx
  */
-class Heap<T> {
+export default class Heap<T> {
   //保存数据
   private data: T[] = []
   //堆的大小

@@ -1,4 +1,4 @@
-import IQueue from "../queue队列/Typescript/IQueue"
+import IQueue from "../../queue队列/Typescript/IQueue"
 
 //基于数组实现queue
 export class ArrayQueue<T> implements IQueue<T> {
